@@ -24,8 +24,11 @@ class NewsindController extends Controller
         $newsindcount = DB::table('newsind')->count();
 
         if($request->has('search')){
+            
             $newsind = DB::table('newsind')->where('title','LIKE','%'.$request->search.'%')
             ->orWhere('content','LIKE','%'.$request->search.'%')->paginate(15);
+
+            
             $newsindcount = DB::table('newsind')->count();
         }
 
